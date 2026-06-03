@@ -2,30 +2,54 @@
   description = "Home Manager configuration of rxhap";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
-    let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
     {
-      homeConfigurations."rxhap" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      self,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      nixvim,
+    } @ inputs:
+    {
+      # MacOS
+      homeConfigurations."rxhap@Air-M3.local" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home-manager/common.nix
+          ./home-manager/mac.nix
+          nixvim.homeModules.nixvim
+        ];
+      };
+      darwinConfigurations."rxhap@Air-M3.local" = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self; };
+        modules = [ ./nix-darwin/configuration.nix ];
+      };
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      # NixOS(WSL)
+      homeConfigurations."rxhap@nixos-wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home-manager/common.nix
+          ./home-manager/wsl.nix
+          nixvim.homeModules.nixvim
+        ];
       };
     };
 }
