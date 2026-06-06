@@ -26,6 +26,7 @@
 
     # fonts
     moralerspace-jpdoc
+    moralerspace-hwjpdoc
 
     # misc. tools
     sl
