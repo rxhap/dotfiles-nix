@@ -31,8 +31,8 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         extraSpecialArgs = { inherit inputs; };
         modules = [
-          ./home-manager/common.nix
-          ./home-manager/mac.nix
+          ./home-manager/common
+          ./home-manager/mac
           nixvim.homeModules.nixvim
         ];
       };
@@ -46,8 +46,8 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [
-          ./home-manager/common.nix
-          ./home-manager/wsl.nix
+          ./home-manager/common
+          ./home-manager/wsl
           nixvim.homeModules.nixvim
         ];
       };
