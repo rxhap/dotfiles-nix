@@ -8,4 +8,6 @@ in
 
   home.username = "rxhap";
   home.homeDirectory = "/Users/rxhap";
+
+  programs.zsh.loginExtra = "eval \"$(/opt/homebrew/bin/brew shellenv)\"";
 }
