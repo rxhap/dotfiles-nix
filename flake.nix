@@ -27,7 +27,7 @@
     } @ inputs:
     {
       # MacOS
-      homeConfigurations."rxhap@Air-M3.local" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."rxhap@Air-M3" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         extraSpecialArgs = { inherit inputs; };
         modules = [
