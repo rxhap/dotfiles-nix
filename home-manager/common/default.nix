@@ -27,6 +27,9 @@ in
     # fonts
     moralerspace-jpdoc
 
+    # programming
+    go
+
     # misc. tools
     sl
   ];
