@@ -5,7 +5,7 @@ let
 in
 {
   imports = commonModules;
-  
+
   programs.home-manager.enable = true;
   home.stateVersion = "26.11"; # Please read the comment before changing.
 
@@ -29,6 +29,7 @@ in
 
     # programming
     go
+    gopls
 
     # misc. tools
     sl
