@@ -11,6 +11,10 @@
       lt = "eza -T -L 3 -a -I 'node_modules|.git|.cache' --icons";
       lta = "eza -T -a -I 'node_modules|.git|.cache' --color=always --icons";
     };
+    initContent = ''
+      export GOPATH=$HOME/.go;
+      export PATH=$PATH:$GOPATH/bin;
+    '';
   };
 
   programs.powerline-go.enable = true;
