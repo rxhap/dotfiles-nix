@@ -31,6 +31,7 @@ in
     # programming
     go
     gopls
+    tree-sitter
 
     # misc. tools
     sl
