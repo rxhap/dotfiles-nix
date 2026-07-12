@@ -11,10 +11,6 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -33,7 +29,6 @@
         modules = [
           ./home-manager/common
           ./home-manager/mac
-          nixvim.homeModules.nixvim
         ];
       };
       darwinConfigurations."rxhap@Air-M3.local" = nix-darwin.lib.darwinSystem {
@@ -48,7 +43,6 @@
         modules = [
           ./home-manager/common
           ./home-manager/wsl
-          nixvim.homeModules.nixvim
         ];
       };
     };

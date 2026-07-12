@@ -18,5 +18,7 @@ in
     eval "$(/usr/bin/env PATH_HELPER_ROOT="/opt/homebrew" /usr/libexec/path_helper -s)"
     [ -z "''${MANPATH-}" ] || export MANPATH=":''${MANPATH#:}";
     export INFOPATH="/opt/homebrew/share/info:''${INFOPATH:-}";
+
+    export DISPLAY=:0
   '';
 }
