@@ -17,6 +17,7 @@ in
     # essential tools
     git
     gh
+    neovim
     uv
 
     # useful tools
