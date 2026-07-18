@@ -12,6 +12,7 @@
           lines = 24;
         };
         dynamic_padding = true;
+        option_as_alt = "Both";
       };
       scrolling = {
         history = 100000;
