@@ -24,6 +24,9 @@ in
     bat
     eza
     lazygit
+    tree-sitter
+    ripgrep
+    fd
 
     # fonts
     moralerspace-jpdoc
@@ -31,7 +34,6 @@ in
     # programming
     go
     gopls
-    tree-sitter
 
     # misc. tools
     sl
